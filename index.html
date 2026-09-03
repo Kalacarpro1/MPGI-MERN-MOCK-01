@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Student Application Manager — Register, manage and track student applications with ease.">
+    <title>StudentFlow — Application Manager</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="site-header">
+        <div class="header-inner">
+            <div class="logo">
+                <span class="logo-icon">🎓</span>
+                <span class="logo-text">StudentFlow</span>
+            </div>
+            <div class="header-badge">
+                <span id="totalStudentsBadge">0 Students</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-inner">
+            <h1 class="hero-title">Student Application <span class="gradient-text">Manager</span></h1>
+            <p class="hero-subtitle">Register students, manage applications, and track enrollments — all in one place.</p>
+        </div>
+        <div class="hero-orb orb-1"></div>
+        <div class="hero-orb orb-2"></div>
+    </section>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+        <!-- FORM SECTION -->
+        <section class="form-section">
+            <div class="section-header">
+                <h2 class="section-title">Register New Student</h2>
+                <p class="section-subtitle">Fill in all the required details below</p>
+            </div>
+
+            <form id="studentForm" class="student-form" novalidate>
+
+                <!-- Row 1: Name + Email -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="studentName" class="form-label">Student Name <span class="required">*</span></label>
+                        <input
+                            type="text"
+                            id="studentName"
+                            class="form-input"
+                            placeholder="e.g. Rahul Sharma"
+                            autocomplete="off"
+                        >
+                        <span class="error-msg" id="nameError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="studentEmail" class="form-label">Email Address <span class="required">*</span></label>
+                        <input
+                            type="email"
+                            id="studentEmail"
+                            class="form-input"
+                            placeholder="e.g. rahul@example.com"
+                            autocomplete="off"
+                        >
+                        <span class="error-msg" id="emailError"></span>
+                    </div>
+                </div>
+
+                <!-- Row 2: Phone + DOB -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="studentPhone" class="form-label">Phone Number <span class="required">*</span></label>
+                        <input
+                            type="tel"
+                            id="studentPhone"
+                            class="form-input"
+                            placeholder="10-digit number"
+                            maxlength="10"
+                            autocomplete="off"
+                        >
+                        <span class="error-msg" id="phoneError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="studentDob" class="form-label">Date of Birth <span class="required">*</span></label>
+                        <input
+                            type="date"
+                            id="studentDob"
+                            class="form-input"
+                        >
+                        <span class="error-msg" id="dobError"></span>
+                    </div>
+                </div>
+
+                <!-- Row 3: Gender -->
+                <div class="form-group full-width">
+                    <label class="form-label">Gender <span class="required">*</span></label>
+                    <div class="radio-group" id="genderGroup">
+                        <label class="radio-label" id="genderMaleLabel">
+                            <input type="radio" name="gender" id="genderMale" value="Male" class="radio-input">
+                            <span class="radio-custom"></span>
+                            Male
+                        </label>
+                        <label class="radio-label" id="genderFemaleLabel">
+                            <input type="radio" name="gender" id="genderFemale" value="Female" class="radio-input">
+                            <span class="radio-custom"></span>
+                            Female
+                        </label>
+                        <label class="radio-label" id="genderOtherLabel">
+                            <input type="radio" name="gender" id="genderOther" value="Other" class="radio-input">
+                            <span class="radio-custom"></span>
+                            Other
+                        </label>
+                    </div>
+                    <span class="error-msg" id="genderError"></span>
+                </div>
+
+                <!-- Row 4: Course -->
+                <div class="form-group full-width">
+                    <label for="studentCourse" class="form-label">Course <span class="required">*</span></label>
+                    <select id="studentCourse" class="form-select">
+                        <option value="">— Select a Course —</option>
+                        <option value="Web Development">Web Development</option>
+                        <option value="UI/UX">UI/UX</option>
+                        <option value="Python">Python</option>
+                        <option value="Data Analytics">Data Analytics</option>
+                    </select>
+                    <span class="error-msg" id="courseError"></span>
+                </div>
+
+                <!-- Row 5: Skills -->
+                <div class="form-group full-width">
+                    <label class="form-label">Skills <span class="required">*</span> <small>(select at least one)</small></label>
+                    <div class="checkbox-group" id="skillsGroup">
+                        <label class="checkbox-label" id="skillHtmlLabel">
+                            <input type="checkbox" id="skillHtml" value="HTML" class="checkbox-input">
+                            <span class="checkbox-custom"></span>
+                            HTML
+                        </label>
+                        <label class="checkbox-label" id="skillCssLabel">
+                            <input type="checkbox" id="skillCss" value="CSS" class="checkbox-input">
+                            <span class="checkbox-custom"></span>
+                            CSS
+                        </label>
+                        <label class="checkbox-label" id="skillJsLabel">
+                            <input type="checkbox" id="skillJs" value="JavaScript" class="checkbox-input">
+                            <span class="checkbox-custom"></span>
+                            JavaScript
+                        </label>
+                        <label class="checkbox-label" id="skillGitLabel">
+                            <input type="checkbox" id="skillGit" value="Git" class="checkbox-input">
+                            <span class="checkbox-custom"></span>
+                            Git
+                        </label>
+                    </div>
+                    <span class="error-msg" id="skillsError"></span>
+                </div>
+
+                <!-- Row 6: About -->
+                <div class="form-group full-width">
+                    <label for="studentAbout" class="form-label">About Student <span class="required">*</span></label>
+                    <textarea
+                        id="studentAbout"
+                        class="form-textarea"
+                        placeholder="Tell us about the student — their goals, background, interests..."
+                        rows="4"
+                    ></textarea>
+                    <span class="error-msg" id="aboutError"></span>
+                </div>
+
+                <!-- Row 7: Photo -->
+                <div class="form-group full-width">
+                    <label for="studentPhoto" class="form-label">Profile Photo <span class="required">*</span></label>
+                    <div class="file-upload-area" id="fileUploadArea">
+                        <input
+                            type="file"
+                            id="studentPhoto"
+                            class="file-input"
+                            accept="image/*"
+                        >
+                        <div class="file-upload-content" id="fileUploadContent">
+                            <span class="file-icon">📷</span>
+                            <span class="file-text">Click to upload photo</span>
+                            <span class="file-hint">JPG, PNG, GIF up to 5MB</span>
+                        </div>
+                    </div>
+                    <span class="error-msg" id="photoError"></span>
+                </div>
+
+                <!-- Submit -->
+                <div class="form-actions">
+                    <button type="submit" id="submitBtn" class="btn btn-primary">
+                        <span class="btn-icon">✚</span>
+                        Add Student
+                    </button>
+                    <button type="button" id="clearBtn" class="btn btn-secondary">
+                        <span class="btn-icon">↺</span>
+                        Clear Form
+                    </button>
+                </div>
+
+            </form>
+        </section>
+
+        <!-- STUDENTS SECTION -->
+        <section class="students-section">
+            <div class="students-header">
+                <div class="students-title-group">
+                    <h2 class="section-title">Registered Students</h2>
+                    <div class="student-count-badge">
+                        Total Students: <strong id="totalStudentsCount">0</strong>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Empty State -->
+            <div class="empty-state" id="emptyState">
+                <div class="empty-icon">👥</div>
+                <h3 class="empty-title">No Students Yet</h3>
+                <p class="empty-desc">Fill in the form above to register your first student.</p>
+            </div>
+
+            <!-- Student Cards Container -->
+            <div class="students-grid" id="studentContainer"></div>
+
+        </section>
+
+        <!-- DEBUGGING SECTION -->
+        <section class="debug-section">
+            <div class="section-header">
+                <h2 class="section-title">🐞 Debug Challenge — Task 4B</h2>
+                <p class="section-subtitle">Fixed version of the buggy student form code</p>
+            </div>
+
+            <div class="debug-mini-app">
+                <form id="debugForm" class="debug-form">
+                    <input
+                        type="text"
+                        id="debugStudentName"
+                        class="debug-input"
+                        placeholder="Enter student name"
+                    >
+                    <button type="submit" id="debugSubmitBtn" class="btn btn-debug">Add Student</button>
+                </form>
+                <div id="debugContainer" class="debug-card-container"></div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <p>StudentFlow © 2024 — Built with HTML, CSS & Vanilla JavaScript</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
